@@ -7,8 +7,8 @@ import (
 )
 
 // Package context is for RESTful API
-// For example: SlackRouters.Add("/checkdj/{environment}", request.CheckDelayedJobs())
-// {environment} can be MSSS either Libviewer
+// For example: Routers.Add("/checkdj/{environment}", request.CheckDelayedJobs())
+// {environment} can be opinionated
 // TODO: Set custom params, check if request is restful or not, if restful then parse param {environment}
 // and return custom value
 // TODO: Reimplement ServeHTTP

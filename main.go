@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"msss_slackapi/route"
+	"mapi/route"
 	"net/http"
 	"time"
 )
@@ -57,25 +57,14 @@ func HandlerWrapper(fn http.HandlerFunc) http.HandlerFunc {
 	}
 }
 
-// HandlerWrapper will validate token and wrap function into handler
-// func HandlerWrapper(fn func(http.ResponseWriter, *http.Request)) http.HandlerFunc {
-// 	return func(w http.ResponseWriter, r *http.Request) {
-// 		defer log.Println("After")
-// 		must.CheckToken(&r)
-// 		if must.BeRight == true {
-// 			fn(w, r)
-// 		}
-// 	}
-// }
-
 // CheckToken will validate token
 func (must *Must) CheckToken(r *http.Request) *Must {
-	//Ex: api/hello?token=1234
+	// Ex: api/hello?token=1234
 	// TODO: token should be generate silently in shell script => os.Env()
 
 	if err := req.ParseForm(); err != nil {
-   		must.BeRight = false
-   		must.Msg = "Cannot parse URL. Please double check"
+			must.BeRight = false
+			must.Msg = "Cannot parse URL. Please double check"
 	} else if token := req.Form.Get("token"); token != "1234" {
 		must.BeRight = false
 		must.Msg = "Invalid Token"
@@ -84,7 +73,7 @@ func (must *Must) CheckToken(r *http.Request) *Must {
 	return must
 }
 
-// CheckNotAbuse will check whether the slack is abusing MSSS api
+// CheckNotAbuse will check whether the client is abusing api
 func (must *Must) CheckNotAbuse(r *http.Request) *Must {
 	if must.BeRight = false {
 		return must

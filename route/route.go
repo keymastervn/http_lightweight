@@ -1,19 +1,19 @@
 package route
 
 import (
-	"msss_slackapi/model"
-	"msss_slackapi/request"
+	"mapi/model"
+	"mapi/request"
 )
 
 func init() {
-	var SlackRouters model.[]*Router
-	make(SlackRouters, 5)
+	var Routers model.[]*Router
+	make(Routers, 5)
 }
 
 func Link() model.[]*Router {
-	SlackRouters.Add("/hello", request.HelloWorld())
-	SlackRouters.Add("/now", request.Timenow())
-	SlackRouters.Add("/checkdj", request.CheckDelayedJobs())
+	Routers.Add("/hello", request.HelloWorld())
+	Routers.Add("/now", request.Timenow())
+	Routers.Add("/checkdj", request.CheckDelayedJobs())
 
-	return SlackRouters
+	return Routers
 }
